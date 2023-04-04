@@ -1,10 +1,11 @@
-chrome.storage.local.get(["count"]).then((result) => {
-    //console.log("Value currently is " + result.count);
-    addTextToPopup(result.count)
-  });
 
+fetchCount()
 
+async function fetchCount() {
+  const response = await chrome.runtime.sendMessage({})
+  addTextToPopup(response.killCount);
+}
 
-function addTextToPopup(killCount) {
-    document.getElementById("count").innerHTML = `${killCount} sponsored posts killed`;
+function addTextToPopup(text) {
+    document.getElementById("count").innerHTML = `${text} sponsored posts killed`;
 }

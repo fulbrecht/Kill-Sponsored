@@ -22,16 +22,11 @@ function killPost(textNode) {
   else if(depth === headerDepth){
     sponsoredNode = parentNodes(textNode, headerParents).lastChild.firstChild
     sponsoredNode.parentNode.removeChild(sponsoredNode)
-    //sponsoredNode.style.backgroundColor = "red"
   }
   textNode.nodeValue = "😎"
   killCount ++
-  chrome.runtime.sendMessage(killCount.toString());
-  chrome.storage.local.set({ count: killCount })
-  //console.log(killCount)
-  //textNode.nodeValue = getNodeDepth(textNode)
-  //textNode.parentNode.style.backgroundColor = "red"
-
+  const countString = killCount.toString()
+  chrome.runtime.sendMessage({countString});
 }
 
 function addMutationObserver() {
