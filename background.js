@@ -9,6 +9,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.runtime.onMessage.addListener(function(message, sender) {
     chrome.action.setBadgeText({
+        tabId: sender.tab.id,
         text: message,
       });
 });
