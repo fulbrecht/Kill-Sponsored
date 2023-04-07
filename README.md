@@ -8,4 +8,5 @@
 - Handy 'kill count' badge on extension icon to keep track of removed posts
 - Nifty popup that also displays kill count
 
-*Currently under review on the Chrome Web Store*
+Now available on the Chrome Webstore:
+https://chrome.google.com/webstore/detail/kill-sponsored/pjfgebapfffoehjacoedppnpkidocjcf
