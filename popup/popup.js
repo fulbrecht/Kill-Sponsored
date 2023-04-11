@@ -7,5 +7,10 @@ async function fetchCount() {
 }
 
 function addTextToPopup(text) {
-    document.getElementById("count").innerHTML = `${text}`;
+    document.getElementById("count").innerHTML = text
+    if(text === "1"){
+      document.getElementById("message").innerHTML = "sponsored post killed"
+    } else {
+      document.getElementById("message").innerHTML = "sponsored posts killed"
+    }
 }

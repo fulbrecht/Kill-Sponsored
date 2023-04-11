@@ -17,16 +17,16 @@ function killPost(textNode) {
   if(depth === inlineDepth) {
     sponsoredNode = parentNodes(textNode, inlineParents)
     sponsoredNode.style.display = "none";
-    killCount ++
-    sendCount(killCount)
+    killCount ++;
+    sendCount(killCount);
   }
   //kill sponsored header posts
   else if(depth === headerDepth){
     sponsoredNode = parentNodes(textNode, headerParents).lastChild.firstChild
     sponsoredNode.style.display = "none";
-    textNode.nodeValue = "😎"
-    killCount ++
-    sendCount(killCount)
+    textNode.nodeValue = "😎";
+    killCount ++;
+    sendCount(killCount);
   }
   
 }
@@ -85,7 +85,7 @@ function parentNodes(node, num){
     return resultNode
 }
 
-function sendCount(count){
+async function sendCount(count){
   const countString = count.toString()
   chrome.runtime.sendMessage({countString});
 }

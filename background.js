@@ -12,6 +12,8 @@ function receiver(message, sender,sendResponse) {
 
     if(message.countString){
         killCount = message.countString;
+        //TODO
+        //set max killcount # to +999
         chrome.action.setBadgeText({
             tabId: sender.tab.id,
             text: killCount,
