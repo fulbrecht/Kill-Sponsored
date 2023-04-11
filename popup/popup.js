@@ -7,5 +7,5 @@ async function fetchCount() {
 }
 
 function addTextToPopup(text) {
-    document.getElementById("count").innerHTML = `${text} sponsored posts killed`;
+    document.getElementById("count").innerHTML = `${text}`;
 }
