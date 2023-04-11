@@ -16,11 +16,13 @@ function killPost(textNode) {
   //kill inline sponsored posts 
   if(depth === inlineDepth) {
     sponsoredNode = parentNodes(textNode, inlineParents)
-    sponsoredNode.parentNode.removeChild(sponsoredNode)
+    //sponsoredNode.parentNode.removeChild(sponsoredNode)
+    sponsoredNode.style.display = "none";
   }
   //kill sponsored header posts
   else if(depth === headerDepth){
     sponsoredNode = parentNodes(textNode, headerParents).lastChild.firstChild
+    //sponsoredNode.style.display = "none";
     sponsoredNode.parentNode.removeChild(sponsoredNode)
   }
   textNode.nodeValue = "😎"
