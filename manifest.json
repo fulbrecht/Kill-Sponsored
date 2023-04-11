@@ -7,7 +7,7 @@
         {
           "js": ["scripts/content.js"],
           "matches": [
-            "https://www.facebook.com/marketplace/*"
+            "https://www.facebook.com/*"
           ]
         }
       ],

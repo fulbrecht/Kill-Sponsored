@@ -17,25 +17,29 @@ function killPost(textNode) {
   if(depth === inlineDepth) {
     sponsoredNode = parentNodes(textNode, inlineParents)
     sponsoredNode.style.display = "none";
+    killCount ++
+    sendCount(killCount)
   }
   //kill sponsored header posts
   else if(depth === headerDepth){
     sponsoredNode = parentNodes(textNode, headerParents).lastChild.firstChild
     sponsoredNode.style.display = "none";
+    textNode.nodeValue = "😎"
+    killCount ++
+    sendCount(killCount)
   }
-  textNode.nodeValue = "😎"
-  killCount ++
-  const countString = killCount.toString()
-  chrome.runtime.sendMessage({countString});
+  
 }
 
 function addMutationObserver() {
     const observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
-          mutation.target.querySelectorAll("*").forEach(findSponsored);
+          if(location.href.includes("facebook.com/marketplace")){
+            mutation.target.querySelectorAll("*").forEach(findSponsored);
+          }
         });
       });
-      observer.observe(document.body, { subtree: true, childList: true });      
+      observer.observe(document.body, { subtree: true, childList: true });
 }
 
 function findSponsored(e) {
@@ -79,4 +83,9 @@ function parentNodes(node, num){
         resultNode = resultNode.parentNode
     }
     return resultNode
+}
+
+function sendCount(count){
+  const countString = count.toString()
+  chrome.runtime.sendMessage({countString});
 }
