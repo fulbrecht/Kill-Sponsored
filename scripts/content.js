@@ -16,17 +16,11 @@ function killPost(textNode) {
   //kill inline sponsored posts 
   if(depth === inlineDepth) {
     removeNode(parentNodes(textNode,inlineParents));
-    // sponsoredNode = parentNodes(textNode, inlineParents)
-    // sponsoredNode.style.display = "none";
-    killCount ++
     sendCount(killCount);
   }
   //kill sponsored header posts
   else if(depth === headerDepth){
     removeNode(parentNodes(textNode,headerParents).lastChild.firstChild)
-    // sponsoredNode = parentNodes(textNode, headerParents).lastChild.firstChild
-    // sponsoredNode.style.display = "none";
-    killCount ++
     textNode.nodeValue = "😎";
     sendCount(killCount);
   }
@@ -34,7 +28,12 @@ function killPost(textNode) {
 }
 
 function removeNode(node){
-  node.style.display = "none"
+
+  if(node.style.display !== "none"){
+    node.style.display = "none"
+    killCount ++
+  }
+  //Keep for debugging
   //node.style.backgroundColor = "red"
 }
 
@@ -52,6 +51,7 @@ function addMutationObserver() {
 function findSponsored(e) {
   e.childNodes.forEach((child) => {
     if (child && !isUserInput(child) && /\bSponsored\b/g.test(child.nodeValue)) {
+      console.log("found sponsored")
       killPost(child);
     }
   });
