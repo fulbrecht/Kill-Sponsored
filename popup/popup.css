@@ -25,8 +25,8 @@ h1 {
     text-align: center;
     color: white;
     text-shadow: 1px 0  black;
-    margin: 0%;
-    font-size: 4em;
+    margin: 5%;
+    font-size: calc(35px + 1vw);
 
 }
 

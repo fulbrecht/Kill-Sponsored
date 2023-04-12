@@ -15,20 +15,27 @@ function killPost(textNode) {
   
   //kill inline sponsored posts 
   if(depth === inlineDepth) {
-    sponsoredNode = parentNodes(textNode, inlineParents)
-    sponsoredNode.style.display = "none";
-    killCount ++;
+    removeNode(parentNodes(textNode,inlineParents));
+    // sponsoredNode = parentNodes(textNode, inlineParents)
+    // sponsoredNode.style.display = "none";
+    killCount ++
     sendCount(killCount);
   }
   //kill sponsored header posts
   else if(depth === headerDepth){
-    sponsoredNode = parentNodes(textNode, headerParents).lastChild.firstChild
-    sponsoredNode.style.display = "none";
+    removeNode(parentNodes(textNode,headerParents).lastChild.firstChild)
+    // sponsoredNode = parentNodes(textNode, headerParents).lastChild.firstChild
+    // sponsoredNode.style.display = "none";
+    killCount ++
     textNode.nodeValue = "😎";
-    killCount ++;
     sendCount(killCount);
   }
   
+}
+
+function removeNode(node){
+  // node.style.display = "none"
+  node.style.backgroundColor = "red"
 }
 
 function addMutationObserver() {
