@@ -34,8 +34,8 @@ function killPost(textNode) {
 }
 
 function removeNode(node){
-  // node.style.display = "none"
-  node.style.backgroundColor = "red"
+  node.style.display = "none"
+  //node.style.backgroundColor = "red"
 }
 
 function addMutationObserver() {
